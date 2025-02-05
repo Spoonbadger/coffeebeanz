@@ -8,7 +8,7 @@ import { coffees } from './lib/placeholder-data'
 const FLAVOR_WEIGHTS = [1.2, 1.0, 0.8, 0.8, 1.0];
 
 
-const Coffees = ({ roastValue, flavorValue }: { roastValue: string, flavorValue:number }) => {
+const Coffees = ({ roastValue, flavorValue, decaf }: { roastValue: string, flavorValue: number, decaf: boolean }) => {
   const [tenCoffees, setTenCoffees] = useState([])
 
   const getTargetVector = (flavorValue: number) => {
@@ -29,9 +29,11 @@ const Coffees = ({ roastValue, flavorValue }: { roastValue: string, flavorValue:
     )
   }
 
-
   useEffect(() => {
+
+    
     const filteredCoffees = coffees
+      .filter(coffee => (!decaf || coffee.decaf) && coffee.roast_level === roastValue)
       .map(coffee => {
         const coffeeVector = [
           coffee.bitterValue,
@@ -46,13 +48,12 @@ const Coffees = ({ roastValue, flavorValue }: { roastValue: string, flavorValue:
         return { coffee, distance}
       })
       .sort((a, b) => a.distance - b.distance)
-      .filter(coffDistObj => coffDistObj.coffee.roast_level === roastValue)
-      .slice(0, 10)
+      .slice(0, 5)
       .map(coffDistObj => coffDistObj.coffee)
 
     setTenCoffees(filteredCoffees)
     console.log("filteredCoffees: ", filteredCoffees)
-  }, [roastValue, flavorValue])
+  }, [roastValue, flavorValue, decaf])
   
   return (
     <ul>

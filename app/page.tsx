@@ -8,6 +8,7 @@ export default function Home() {
 
   const [roastValue, setRoastValue] = useState("medium")
   const [flavorValue, setFlavorValue] = useState(50)
+  const [decaf, setDecaf] = useState(false)
 
   const handleRoastValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value)
@@ -76,13 +77,19 @@ export default function Home() {
           <span>fruity</span>
           <span>floral</span>
         </div>
+        <div>
+          <input 
+            type="checkbox"
+            checked={decaf}
+            onChange={(e) => setDecaf(e.target.checked)}
+          /> decaf
+        </div>
 
         <div className="w-full">
-          <Coffees roastValue={roastValue} flavorValue={flavorValue} />
+          <Coffees roastValue={roastValue} flavorValue={flavorValue} decaf={decaf} />
         </div>
 
       </main>
-
 
 
 
