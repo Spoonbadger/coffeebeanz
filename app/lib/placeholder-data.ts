@@ -1,0 +1,552 @@
+export const coffees = [
+  {
+    coffee_id: "dsfg",
+    brand: "bob's",
+    name: "first",
+    origin: "Ethiopia",
+    description: "a lovely rusty dark roast bitter and chewy in all the right places. Not fruity at all.",
+    image: "",
+    roast_level: "dark",
+    bitterValue: 8,
+    nuttyValue: 5,
+    sweetValue: 5,
+    fruityValue: 0,
+    floralValue: 0,
+    // 8, 5, 5, 0, 0 so flavorValue == 
+    // calculate the average in the code
+    // in fact calculate all the values in the code and just store the description? ideally id do the calculation before hand.
+  },
+  {
+    coffee_id: "sadf",
+    brand: "Angle coffee",
+    name: "wings",
+    origin: "Guatamala",
+    description: "a high flighing delicious coffee. a real winner. some tones of peach and nutmeg and blackcurrants.",
+    image: "",
+    roast_level: "medium",
+    bitterValue: 3,
+    nuttyValue: 5,
+    sweetValue: 7,
+    fruityValue: 5,
+    floralValue: 4,
+  },
+  {
+    coffee_id: "cvvvf",
+    brand: "Whatsthiscoffee",
+    name: "thisisbeans",
+    origin: "Guatamala",
+    description: "some beautiful beans they are delicious who knows what to do with these tasty beanst roasted to perfection",
+    image: "",
+    roast_level: "medium",
+    bitterValue: 1,
+    nuttyValue: 0,
+    sweetValue: 0,
+    fruityValue: 0,
+    floralValue: 0,
+  },
+  {
+    coffee_id: "zvcc",
+    brand: "Brewsters Beans",
+    name: "Bodazzle",
+    origin: "Kenya",
+    description: "a delightful coffee sourced from Keyna with flavors to scintilate the pallet with floral notes and vanilla sugar.",
+    image: "",
+    roast_level: "light",
+    bitterValue: 3,
+    nuttyValue: 5,
+    sweetValue: 7,
+    fruityValue: 5,
+    floralValue: 4,
+  },
+  {
+    coffee_id: "sfghd",
+    brand: "Zing coffee",
+    name: "boombastic",
+    origin: "Vietnam",
+    description: "an oily and medium dark roast blending the bittersweetness of cherries and roasted walnuts.",
+    image: "",
+    roast_level: "medium-dark",
+    bitterValue: 6,
+    nuttyValue: 7,
+    sweetValue: 7,
+    fruityValue: 6,
+    floralValue: 2,
+  },
+]
+
+
+// using the coffee taster's flavor wheel
+// export const coffees = [
+//   {
+//     coffee_id: "saaffddf",
+//     brand: "",
+//     name: "",
+//     image: "",
+//     price: "15.99",
+//     origin: "Brazil",
+//     roast_level: "dark",
+//     description: "very dark and oily and nice",
+//     harvest_date: "2022-12-06",
+//     reviews: {
+//       rating: "",
+//       review: "very nice yah"
+//     },
+//     process_method: null,
+//     cultivar: null,
+//     farm_gate: true,
+//     inner: {
+//       roasted: 1,
+//       spices: 2,
+//       nutty_cocoa: 1,
+//       sweet: 2,
+//       floral: 3,
+//       fruity: 3,
+//       sour_fermented: 2,
+//       green_vegetative: 1,
+//       other: 1
+//     },
+//     middle: {
+//       berry: 6,
+//       dried_fruit: 8,
+//       other_fruit: 3,
+//       citrus_fruit: 2,
+//       sour: 1,
+//       alcohol_fermented: 1,
+//       olive_oil: 7,
+//       raw: 7,
+//       green_vegitative: 4,
+//       beany: 9,
+//       papery_musty: 2,
+//       chemical: 4,
+//       pipe_tobacco: 3,
+//       tobacco: 4,
+//       burnt: 5,
+//       cereal: 6,
+//       pungent: 8,
+//       pepper: 3,
+//       nutty: 3,
+//       cocoa: 8,
+//       brown_sugar: 7,
+//       vanilla: 1,
+//       vanillin: 0,
+//       overall_sweet: 4,
+//       sweet_aromatics: 6,
+//       black_tea: 4,
+//       floral: 2
+//     },
+//     outer: {
+//       // Roasted
+//       tobacco: 0,
+//       pipe_tobacco: 0,
+//       burnt: 0,
+//       cereal: 0,
+//       malt: 0,
+//       grain: 0,
+      
+//       // Spices
+//       pepper: 0,
+//       pungent: 0,
+//       nutmeg: 0,
+//       cinnamon: 0,
+//       clove: 0,
+//       anise: 0,
+
+//       // Nutty/Cocoa
+//       cocoa: 0,
+//       dark_chocolate: 0,
+//       milk_chocolate: 0,
+//       almond: 0,
+//       hazelnut: 0,
+//       peanut: 0,
+
+//       // Sweet
+//       brown_sugar: 0,
+//       caramelized: 0,
+//       honey: 0,
+//       maple_syrup: 0,
+//       molasses: 0,
+
+//       // Floral
+//       jasmine: 0,
+//       chamomile: 0,
+//       rose: 0,
+//       black_tea: 0,
+
+//       // Fruity
+//       blackberry: 0,
+//       raspberry: 0,
+//       blueberry: 0,
+//       strawberry: 0,
+//       raisin: 0,
+//       prune: 0,
+//       coconut: 0,
+//       cherry: 0,
+//       pomegranate: 0,
+//       pineapple: 0,
+//       grape: 0,
+//       apple: 0,
+//       pear: 0,
+//       grapefruit: 0,
+//       orange: 0,
+//       lemon: 0,
+//       lime: 0,
+
+//       // Sour/Fermented
+//       sour_aromatics: 0,
+//       acetic_acid: 0,
+//       butyric_acid: 0,
+//       isovaleric_acid: 0,
+//       citric_acid: 0,
+//       malic_acid: 0,
+
+//       // Green/Vegetative
+//       under_ripe: 0,
+//       peapod: 0,
+//       fresh: 0,
+//       dark_green: 0,
+//       vegetative: 0,
+//       hay_like: 0,
+//       herby: 0,
+
+//       // Other
+//       papery: 0,
+//       musty: 0,
+//       dusty: 0,
+//       moldy_damp: 0,
+//       woody: 0,
+//       cardboard: 0,
+//       rubber: 0,
+//       skunky: 0,
+//       petroleum: 0
+//     }
+//   },
+//   {
+//     coffee_id: "brazil-dark-001",
+//     brand: "Coffee Roasters Inc.",
+//     name: "Brazilian Midnight Roast",
+//     price: "15.99",
+//     origin: "Brazil",
+//     roast_level: "dark",
+//     description: "A bold, full-bodied coffee with rich cocoa and nutty undertones.",
+//     harvest_date: "2022-12-06",
+//     reviews: {
+//       rating: "4.5",
+//       review: "Rich and smooth, perfect for dark roast lovers."
+//     },
+//     process_method: "Natural",
+//     cultivar: "Bourbon",
+//     farm_gate: true,
+//     inner: {
+//       roasted: 8,
+//       spices: 6,
+//       nutty_cocoa: 9,
+//       sweet: 5,
+//       floral: 2,
+//       fruity: 3,
+//       sour_fermented: 1,
+//       green_vegetative: 2,
+//       other: 1
+//     },
+//     middle: {
+//       berry: 4,
+//       dried_fruit: 7,
+//       other_fruit: 3,
+//       citrus_fruit: 2,
+//       sour: 1,
+//       alcohol_fermented: 1,
+//       olive_oil: 3,
+//       raw: 2,
+//       green_vegitative: 3,
+//       beany: 6,
+//       papery_musty: 1,
+//       chemical: 1,
+//       pipe_tobacco: 5,
+//       tobacco: 6,
+//       burnt: 8,
+//       cereal: 6,
+//       pungent: 7,
+//       pepper: 4,
+//       nutty: 8,
+//       cocoa: 9,
+//       brown_sugar: 7,
+//       vanilla: 3,
+//       vanillin: 2,
+//       overall_sweet: 6,
+//       sweet_aromatics: 7,
+//       black_tea: 2,
+//       floral: 3
+//     },
+//     outer: {
+//       // Roasted
+//       tobacco: 6,
+//       pipe_tobacco: 5,
+//       burnt: 8,
+//       cereal: 6,
+//       malt: 7,
+//       grain: 6,
+      
+//       // Spices
+//       pepper: 4,
+//       pungent: 7,
+//       nutmeg: 5,
+//       cinnamon: 3,
+//       clove: 3,
+//       anise: 2,
+
+//       // Nutty/Cocoa
+//       cocoa: 9,
+//       dark_chocolate: 8,
+//       milk_chocolate: 5,
+//       almond: 7,
+//       hazelnut: 8,
+//       peanut: 6,
+
+//       // Sweet
+//       brown_sugar: 7,
+//       caramelized: 8,
+//       honey: 4,
+//       maple_syrup: 6,
+//       molasses: 5,
+
+//       // Floral
+//       jasmine: 2,
+//       chamomile: 1,
+//       rose: 1,
+//       black_tea: 2,
+
+//       // Fruity
+//       blackberry: 2,
+//       raspberry: 3,
+//       blueberry: 3,
+//       strawberry: 2,
+//       raisin: 7,
+//       prune: 6,
+//       coconut: 2,
+//       cherry: 3,
+//       pomegranate: 3,
+//       pineapple: 2,
+//       grape: 2,
+//       apple: 2,
+//       pear: 2,
+//       grapefruit: 1,
+//       orange: 2,
+//       lemon: 1,
+//       lime: 1,
+
+//       // Sour/Fermented
+//       sour_aromatics: 1,
+//       acetic_acid: 1,
+//       butyric_acid: 0,
+//       isovaleric_acid: 0,
+//       citric_acid: 1,
+//       malic_acid: 1,
+
+//       // Green/Vegetative
+//       under_ripe: 2,
+//       peapod: 1,
+//       fresh: 2,
+//       dark_green: 1,
+//       vegetative: 1,
+//       hay_like: 1,
+//       herby: 2,
+
+//       // Other
+//       papery: 1,
+//       musty: 0,
+//       dusty: 1,
+//       moldy_damp: 0,
+//       woody: 2,
+//       cardboard: 1,
+//       rubber: 0,
+//       skunky: 0,
+//       petroleum: 0
+//     }
+//   },
+//   // Third coffee entry
+//   {
+//     coffee_id: "ethiopia-washed-003",
+//     brand: "Ethiopian Coffee Co.",
+//     name: "Ethiopian Sunrise",
+//     price: "18.99",
+//     origin: "Ethiopia",
+//     roast_level: "medium",
+//     description: "A bright, floral coffee with notes of citrus and jasmine, perfect for a refreshing start to the day.",
+//     harvest_date: "2023-10-15",
+//     reviews: {
+//       rating: "4.8",
+//       review: "Delicate and vibrant, one of the best Ethiopian coffees I've tasted!"
+//     },
+//     process_method: "Washed",
+//     cultivar: "Heirloom",
+//     farm_gate: true,
+//     inner: {
+//       roasted: 3,
+//       spices: 2,
+//       nutty_cocoa: 2,
+//       sweet: 7,
+//       floral: 9,
+//       fruity: 8,
+//       sour_fermented: 1,
+//       green_vegetative: 2,
+//       other: 1
+//     },
+//     middle: {
+//       berry: 7,
+//       dried_fruit: 4,
+//       other_fruit: 9,
+//       citrus_fruit: 10,
+//       sour: 3,
+//       alcohol_fermented: 1,
+//       olive_oil: 2,
+//       raw: 2,
+//       green_vegitative: 2,
+//       beany: 3,
+//       papery_musty: 1,
+//       chemical: 0,
+//       pipe_tobacco: 1,
+//       tobacco: 1,
+//       burnt: 1,
+//       cereal: 2,
+//       pungent: 1,
+//       pepper: 1,
+//       nutty: 2,
+//       cocoa: 3,
+//       brown_sugar: 5,
+//       vanilla: 4,
+//       vanillin: 2,
+//       overall_sweet: 8,
+//       sweet_aromatics: 9,
+//       black_tea: 8,
+//       floral: 10
+//     },
+//     outer: {
+//       // Roasted
+//       tobacco: 0,
+//       pipe_tobacco: 0,
+//       burnt: 0,
+//       cereal: 1,
+//       malt: 1,
+//       grain: 1,
+
+//       // Spices
+//       pepper: 0,
+//       pungent: 0,
+//       nutmeg: 0,
+//       cinnamon: 0,
+//       clove: 0,
+//       anise: 0,
+
+//       // Nutty/Cocoa
+//       cocoa: 2,
+//       dark_chocolate: 1,
+//       milk_chocolate: 1,
+//       almond: 1,
+//       hazelnut: 1,
+//       peanut: 1,
+
+//       // Sweet
+//       brown_sugar: 3,
+//       caramelized: 2,
+//       honey: 6,
+//       maple_syrup: 4,
+//       molasses: 2,
+
+//       // Floral
+//       jasmine: 10,
+//       chamomile: 8,
+//       rose: 7,
+//       black_tea: 8,
+
+//       // Fruity
+//       blackberry: 4,
+//       raspberry: 5,
+//       blueberry: 4,
+//       strawberry: 3,
+//       raisin: 2,
+//       prune: 1,
+//       coconut: 1,
+//       cherry: 6,
+//       pomegranate: 4,
+//       pineapple: 5,
+//       grape: 7,
+//       apple: 6,
+//       pear: 5,
+//       grapefruit: 8,
+//       orange: 7,
+//       lemon: 9,
+//       lime: 8,
+
+//       // Sour/Fermented
+//       sour_aromatics: 2,
+//       acetic_acid: 1,
+//       butyric_acid: 0,
+//       isovaleric_acid: 0,
+//       citric_acid: 10,
+//       malic_acid: 8,
+
+//       // Green/Vegetative
+//       under_ripe: 2,
+//       peapod: 1,
+//       fresh: 3,
+//       dark_green: 2,
+//       vegetative: 1,
+//       hay_like: 1,
+//       herby: 1,
+
+//       // Other
+//       papery: 0,
+//       musty: 0,
+//       dusty: 0,
+//       moldy_damp: 0,
+//       woody: 1,
+//       cardboard: 0,
+//       rubber: 0,
+//       skunky: 0,
+//       petroleum: 0
+//     }
+//   }
+// ];
+
+
+// Or using sweet maria's guide
+
+// const coffees = [
+//   {
+//     coffee_id: "saaffddf",
+//     brand: "",
+//     name: "",
+//     price: "15.99",
+//     origin: 'brazil',
+//     date: '2022-12-06',
+//     reviews: 4,
+//     process_method: null,
+//     cultivar: null,
+//     farm_gate: true,
+//     cup_flavors: {
+//       fragrance: "d",
+//       wet_aroma: "d",
+//       brightness: "",
+//       flavor: "",
+//       body: "",
+//       finish: "",
+//       sweetness: "",
+//       clean_cup: "",
+//       complexity: "",
+//       uniformity: "",
+//     },
+//     flavors: {
+//       floral: "",
+//       honey: "",
+//       sugars: "",
+//       caramel: "",
+//       fruits: "",
+//       citrus: "",
+//       berry: "",
+//       cocoa: "",
+//       nuts: "",
+//       rustic: "",
+//       spice: "",
+//       body: "",
+//     }
+//   }
+// ]
