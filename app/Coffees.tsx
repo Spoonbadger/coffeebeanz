@@ -3,13 +3,14 @@
 import { useEffect, useState } from 'react'
 import Coffee from './Coffee'
 import { coffees } from './lib/placeholder-data'
+import { CoffeeType } from './lib/definitions'
 
 // Define flavor weights (customize as needed)
 const FLAVOR_WEIGHTS = [1.2, 1.0, 0.8, 0.8, 1.0];
 
 
-const Coffees = ({ roastValue, flavorValue, decaf }: { roastValue: string, flavorValue: number, decaf: boolean }) => {
-  const [tenCoffees, setTenCoffees] = useState([])
+const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, sweetValue, fruityValue, floralValue }: { roastValue: string, flavorValue: number, decaf: boolean, bitterValue: number, nuttyValue: number, sweetValue: number, fruityValue: number, floralValue: number }) => {
+  const [tenCoffees, setTenCoffees] = useState<CoffeeType[]>([])
 
   const getTargetVector = (flavorValue: number) => {
     const t = flavorValue / 100
@@ -21,6 +22,15 @@ const Coffees = ({ roastValue, flavorValue, decaf }: { roastValue: string, flavo
       10 * Math.max(2 * t - 1, 0)  // Floral
     ]
   }
+  const getTargetVector2 = (bitterValue: number, nuttyValue: number, sweetValue: number, fruityValue: number, floralValue: number) => {
+    return [
+      10 * Math.max(1 - 2 * (bitterValue / 10), 0),   // Bitter
+      10 * Math.max(1 - Math.abs(0.5 - (nuttyValue /10)) * 4, 0),  // Nutty
+      10 * Math.max(1 - Math.abs(0.6 - (sweetValue /10)) * 4, 0),  // Sweet
+      10 * Math.max(1 - Math.abs(0.75 - (fruityValue /10)) * 4, 0),  // Fruity
+      10 * Math.max(2 * (floralValue / 10) - 1, 0)   // Floral
+    ]
+  }
 
   // Weighted distance function (using flavor weights)
   const weightedEuclideanDistance = (a: number[], b: number[]) => {
@@ -29,11 +39,10 @@ const Coffees = ({ roastValue, flavorValue, decaf }: { roastValue: string, flavo
     )
   }
 
-  useEffect(() => {
 
-    
-    const filteredCoffees = coffees
-      .filter(coffee => (!decaf || coffee.decaf) && coffee.roast_level === roastValue)
+  useEffect(() => {
+    const radarFilteredCoffees = coffees
+      .filter(coffee => (!decaf || coffee.decaf) && (coffee.roast_level === roastValue || !coffee.roast_level))
       .map(coffee => {
         const coffeeVector = [
           coffee.bitterValue,
@@ -42,7 +51,30 @@ const Coffees = ({ roastValue, flavorValue, decaf }: { roastValue: string, flavo
           coffee.fruityValue,
           coffee.floralValue
         ]
-        const target = getTargetVector(flavorValue)
+
+        const target = getTargetVector2(bitterValue, nuttyValue, sweetValue, fruityValue, floralValue)
+        const distance = weightedEuclideanDistance(coffeeVector, target)
+        return { coffee, distance }
+      })
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 5)
+      .map(coffDistObj => coffDistObj.coffee)
+      
+      setTenCoffees(radarFilteredCoffees)
+  }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, decaf, roastValue])
+
+  useEffect(() => {
+    const filteredCoffees = coffees
+      .filter(coffee => (!decaf || coffee.decaf) && (coffee.roast_level === roastValue || !coffee.roast_level))
+      .map(coffee => {
+        const coffeeVector = [
+          coffee.bitterValue,
+          coffee.nuttyValue,
+          coffee.sweetValue,
+          coffee.fruityValue,
+          coffee.floralValue
+        ]
+        const target = getTargetVector(flavorValue) 
         const distance = weightedEuclideanDistance(coffeeVector, target)
 
         return { coffee, distance}
@@ -58,7 +90,7 @@ const Coffees = ({ roastValue, flavorValue, decaf }: { roastValue: string, flavo
   return (
     <ul>
       {tenCoffees.map(coffee => (
-        <li key={coffee.coffee_id}>
+        <li key={coffee.id}>
           <Coffee coffee={coffee} />
         </li>
       ))}

@@ -1,11 +1,20 @@
-export type Coffee = {
-  id: string,
-  brand: string,
-  name: string,
-  roast: Roast,
+export type CoffeeType = {
+  id: string
+  brand: string
+  name: string
+  origin: string | null
   description: string
-  fruity_count: number
-  bitter_count: number
+  image: string | null
+  price: string
+  roast_level: string
+  decaf: boolean
+  decaf_process: string | null
+  bitterValue: number
+  nuttyValue: number
+  sweetValue: number
+  fruityValue: number
+  floralValue: number
 }
 
-type Roast = "light" |"medium-light" | "medium" | "medium-dark" | "dark" 
+export type Roast = "light" |"medium-light" | "medium" | "medium-dark" | "dark" | ""
+
