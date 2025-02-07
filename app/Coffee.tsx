@@ -3,10 +3,13 @@
 import { CoffeeType } from './lib/definitions'
 import Image from 'next/image'
 
-const Coffee = ({ coffee }: { coffee: CoffeeType } ) => {
+const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {
   return (
-    <div className="box-border border-8 border-red-400 w-full m-6 p-5">
-      <strong>{coffee.brand}</strong> - {coffee.name}
+    <div className="box-border border-4 border-[#6f4f1e]/[0.15] bg-[#6f4f1e]/[0.05] w-full m-6 p-5 rounded-lg shadow-lg drop-shadow-sm">
+      <div className="mb-2">
+        <span className="text-2xl font-bold text-[#6f4f1a]/[1]">{rank}. </span>
+        <span className="text-2xl"><strong>{coffee.brand}</strong></span><span className="text-2xl"> - {coffee.name}</span>
+      </div>
       <div className="flex flex-direction-row">
         <Image 
           src={coffee.image || '/fallback-coffee-img.jpg'}
@@ -28,7 +31,9 @@ const Coffee = ({ coffee }: { coffee: CoffeeType } ) => {
           </div>
         </div>
       </div>
-      ${coffee.price}
+      {coffee.price &&
+        <span>${coffee.price}</span>
+      }
     </div>
   )
 }

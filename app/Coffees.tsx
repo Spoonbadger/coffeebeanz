@@ -9,7 +9,8 @@ import { CoffeeType } from './lib/definitions'
 const FLAVOR_WEIGHTS = [1.2, 1.0, 0.8, 0.8, 1.0];
 
 
-const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, sweetValue, fruityValue, floralValue }: { roastValue: string, flavorValue: number, decaf: boolean, bitterValue: number, nuttyValue: number, sweetValue: number, fruityValue: number, floralValue: number }) => {
+const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, complex }
+  : { roastValue: string, flavorValue: number, decaf: boolean, bitterValue: number, nuttyValue: number, sweetValue: number, fruityValue: number, floralValue: number, complex: boolean }) => {
   const [tenCoffees, setTenCoffees] = useState<CoffeeType[]>([])
 
   const getTargetVector = (flavorValue: number) => {
@@ -61,7 +62,7 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
       .map(coffDistObj => coffDistObj.coffee)
       
       setTenCoffees(radarFilteredCoffees)
-  }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, decaf, roastValue])
+  }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, decaf, roastValue, complex])
 
   useEffect(() => {
     const filteredCoffees = coffees
@@ -89,9 +90,9 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
   
   return (
     <ul>
-      {tenCoffees.map(coffee => (
+      {tenCoffees.map((coffee, index) => (
         <li key={coffee.id}>
-          <Coffee coffee={coffee} />
+          <Coffee coffee={coffee} rank={index + 1} />
         </li>
       ))}
     </ul>

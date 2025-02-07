@@ -12,7 +12,7 @@ export default function Home() {
   const [roastValue, setRoastValue] = useState<string>("medium")
   const [flavorValue, setFlavorValue] = useState(50)
   const [decaf, setDecaf] = useState(false)
-  const [simple, setSimple] = useState(true)
+  const [complex, setComplex] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const chartInstanceRef = useRef<Chart | null>(null);
@@ -33,6 +33,10 @@ export default function Home() {
   const handleFlavorValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFlavorValue(Number(event.target.value))
   }
+
+  useEffect(() => {
+    console.log('Complex is now:', complex);
+  }, [complex]);
 
 
   useEffect(() => {
@@ -82,8 +86,20 @@ export default function Home() {
           },
         },
         responsive: true,
+        elements: {
+          point: {
+            radius: 18,
+            hoverRadius: 25,
+            pointStyle: 'circle'
+          }
+        },
         scales: {
           r: {
+            pointLabels: {
+              font: {
+                size: 16,
+              }
+            },
             min: 0,
             max: 10,
             ticks: {
@@ -92,17 +108,19 @@ export default function Home() {
           },
         },
       }
-    });
+    })
+
+    // console.log(chartInstanceRef.current)
     // Cleanup on unmount
     return () => {
       chartInstanceRef.current?.destroy()
     }
-  }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue]) 
+  }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, complex])
   
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-start justify-items-start min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="w-full bg-white/[.05] text-center px-5 py-5 rounded font-bold full-width text-4xl">coffee&beans</div>
+    <div className="grid grid-rows-[20px_1fr_20px] items-start justify-items-start min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-[#6f4f1e]/[0.05]">
+      <div className="w-full bg-[#6f4f1e]/[.1] text-center px-5 py-5 rounded font-bold full-width text-5xl text-slate-800">coffee&beans</div>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start my-10 w-full">
         {/* <Image
           className="dark:invert"
@@ -112,16 +130,26 @@ export default function Home() {
           height={38}
           priority
         /> */}
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+        <ol className="list-inside list-decimal text-md text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
             Get started by moving the{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              sliders
-            </code>to match your preferred flavor notes
+            {!complex ? (
+            <>
+              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+                sliders
+              </code>to match your preferred flavor notes 
+            </>
+            ) : (
+            <>
+              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+                slider & radar chart
+              </code>to match your preferred flavor notes 
+            </>
+            )}
           </li>
           <li>See your beans!</li>
         </ol>
-        Roast Profile
+        <span className="text-lg">Roast Profile</span>
         <input 
           type="range" 
           min={0} 
@@ -131,28 +159,29 @@ export default function Home() {
           step="25"
           onChange={handleRoastValueChange}
         />
-        <div className="flex w-full justify-between px-2 text-xs">
+        <div className="flex w-full justify-between px-2 text-sm">
           <span>dark</span>
           <span >medium-<div>dark</div></span>
           <span>medium</span>
           <span>medium-<div>light</div></span>
           <span>light</span>
-        </div><br />
-        Flavor Profile
+        </div>
+        <span className="text-lg">Flavor Profile</span>
         <div>
           <label className="inline-flex items-center me-5 cursor-pointer">
             <input 
               type="checkbox" 
-              checked={simple} 
+              checked={complex} 
               className="sr-only peer" 
-              onChange={(e) => setSimple(e.target.checked)}
+              onChange={(e) => setComplex(e.target.checked)}
             />
             <div className="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-yellow-300 dark:peer-focus:ring-yellow-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-yellow-400 dark:peer-checked:bg-yellow-400"></div>
             <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Complex</span>
+            {complex && <span className="ml-16">drag and drop for your flavor profile</span>}
           </label>
         </div>
         <div className="w-full">
-          {!simple ? ( 
+          {!complex ? ( 
             <div>
               <input 
                 type="range"
@@ -171,17 +200,17 @@ export default function Home() {
               </div>
             </div>
            ) : (
-            <div className="max-w-[400px] mx-auto">
+            <div className="max-w-[500px] mx-auto">
               <canvas 
                 ref={canvasRef} 
-                width="200" 
-                height="200"
+                width="250" 
+                height="250"
                 ></canvas>
             </div>
            )
           }
-        </div>
-        <div>
+
+        <div className="mt-2">
             <input 
               type="checkbox"
               checked={decaf}
@@ -199,11 +228,12 @@ export default function Home() {
             sweetValue={sweetValue}
             fruityValue={fruityValue}
             floralValue={floralValue}
+            complex={complex}
           />
         </div>
-
+        </div>
+        
       </main>
-
 
 
 
@@ -223,21 +253,6 @@ export default function Home() {
             height={16}
           />
           Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
