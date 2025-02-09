@@ -5,6 +5,7 @@ export type CoffeeType = {
   origin: string | null
   description: string
   image: string | null
+  purchase_link: string
   price: string
   roast_level: string
   decaf: boolean

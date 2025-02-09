@@ -2,20 +2,15 @@
 2. get real data and figure out the best way of doing this (alter any fields as needed)
 
 
-
 code:
 - complete a 'learn' modal
-- sort out design for dark mode
 - sort out design for mobile layout
 - a button to change to dark mode if wanted
+- if medium-light, show medium and light
 
 design:
-- nice cards instead of just a border
-how to artificially change the website to dark mode or not
+- how to artificially change the website to dark mode or not
 - nice background picture - research for ideas - beans border around the title?
-- numbers next to top 5
-- shadow around cards
-- brown slider color for roast_level
 
 database:
 - create the postgres database
@@ -31,6 +26,9 @@ marketing:
 - reach out on social media
 - share with Kenneth
 
+
 make money:
 - featured cofffee of the day and week and month for a price
 - small cut of each sale via the website
+- add affiliate links when the website is up
+- add adSense 

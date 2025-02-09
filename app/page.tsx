@@ -119,9 +119,12 @@ export default function Home() {
   
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-start justify-items-start min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-[#6f4f1e]/[0.05]">
-      <div className="w-full bg-[#6f4f1e]/[.1] text-center px-5 py-5 rounded font-bold full-width text-5xl text-slate-800">coffee&beans</div>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start my-10 w-full">
+    <div className="grid grid-rows-[20px_1fr_20px] items-start justify-items-start min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-[#6f4f1e]/[0.10] dark:bg-black">
+      
+      <div className="w-full p-7 rounded-md bg-[url('/beans-2.avif')] bg-cover bg-[size:60%]">
+        <div className="w-5/6 mx-auto rounded-lg bg-stone-200/[0.7] text-center px-5 py-3 rounded font-bold text-5xl text-stone-800 dark:text-black">BeanCoffeeTasting</div>
+      </div>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start my-16 w-full">
         {/* <Image
           className="dark:invert"
           src="/next.svg"
@@ -137,36 +140,40 @@ export default function Home() {
             <>
               <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
                 sliders
-              </code>to match your preferred flavor notes 
+              </code> to match your preferred flavor notes 
             </>
             ) : (
             <>
               <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
                 slider & radar chart
-              </code>to match your preferred flavor notes 
+              </code> to match your preferred flavor notes 
             </>
             )}
           </li>
           <li>See your beans!</li>
         </ol>
-        <span className="text-lg">Roast Profile</span>
+        <span className="text-lg"><strong>Roast Profile</strong></span>
         <input 
           type="range" 
           min={0} 
           max={100} 
-          value={roastValue === "dark" ? 0 : roastValue === "medium-dark" ? 25 : roastValue === "medium" ? 50 : roastValue === "medium-light" ? 75 : 100} 
-          className="range" 
+          value={roastValue === "dark" ? 0 : roastValue === "medium-dark" ? 25 : roastValue === "medium" ? 50 : roastValue === "medium-light" ? 75 : 100}
+          className={roastValue === "dark" ? "range [--range-shdw:#4A3228]" : roastValue === "medium-dark" ? "range [--range-shdw:#5E2F1A]" : roastValue === "medium" ? "range [--range-shdw:#7D4324]" : roastValue === "medium-light" ? "range [--range-shdw:#B77440]" : "range [--range-shdw:#C19A6B]" }
           step="25"
           onChange={handleRoastValueChange}
         />
         <div className="flex w-full justify-between px-2 text-sm">
-          <span>dark</span>
-          <span >medium-<div>dark</div></span>
-          <span>medium</span>
-          <span>medium-<div>light</div></span>
-          <span>light</span>
+          <span onClick={() => setRoastValue("dark")}>dark</span>
+          <span>|</span>
+          <span onClick={() => setRoastValue("medium-dark")}>medium-<div>dark</div></span>
+          <span>|</span>
+          <span onClick={() => setRoastValue("medium")}>medium</span>
+          <span>|</span>
+          <span onClick={() => setRoastValue("medium-light")}>medium-<div>light</div></span>
+          <span>|</span>
+          <span onClick={() => setRoastValue("light")}>light</span>
         </div>
-        <span className="text-lg">Flavor Profile</span>
+        <span className="text-lg"><strong>Flavor Profile</strong></span>
         <div>
           <label className="inline-flex items-center me-5 cursor-pointer">
             <input 
@@ -185,22 +192,22 @@ export default function Home() {
             <div>
               <input 
                 type="range"
-                min={0} 
+                min={10} 
                 max="100" 
                 value={flavorValue}
                 className="range range-warning"
                 onChange={handleFlavorValueChange}
               />
               <div className="flex justify-between w-full">
-                <span>bitter</span>
-                <span>nutty</span>
-                <span>sweet</span>
-                <span>fruity</span>
-                <span>floral</span>
+                <span onClick={() => setFlavorValue(0)}>bitter</span>
+                <span onClick={() => setFlavorValue(25)}>nutty</span>
+                <span onClick={() => setFlavorValue(50)}>sweet</span>
+                <span onClick={() => setFlavorValue(75)}>fruity</span>
+                <span onClick={() => setFlavorValue(100)}>floral</span>
               </div>
             </div>
            ) : (
-            <div className="max-w-[500px] mx-auto">
+            <div className="max-w-[500px] mx-auto dark:bg-stone-200">
               <canvas 
                 ref={canvasRef} 
                 width="250" 
@@ -256,7 +263,7 @@ export default function Home() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://www.coffeebeantaste.com"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -268,6 +275,20 @@ export default function Home() {
             height={16}
           />
           Go to coffeebeantaste.com →
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://buymeacoffee.com/craigmorley"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/bmc-button.png"
+            alt="Coffee icon"
+            width={140}
+            height={16}
+          />
         </a>
       </footer>
     </div>

@@ -1,18 +1,63 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: [
-      'www.mukilteocoffee.com', 
-      'www.amazon.com', 
-      'www.bluebottle.com', 
-      'm.media-amazon.com', 
-      'res.cloudinary.com',
-      'https://unsplash.com/'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.mukilteocoffee.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.amazon.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.bluebottle.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images-na.ssl-images-amazon.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'unsplash.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.peets.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'brooklynlabcoffee.com',
+        pathname: '/cdn/shop/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'brooklynlabcoffee.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fidalgocoffee.com',
+      },
     ],
-  }
+  },
 };
-
 
 export default nextConfig;
