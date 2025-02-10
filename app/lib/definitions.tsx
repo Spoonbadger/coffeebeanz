@@ -1,5 +1,7 @@
 export type CoffeeType = {
   id: string
+  created_at: Date
+  updated_at: Date
   brand: string
   name: string
   origin: string | null

@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Coffee {
+  id String @unique @default(uuid())
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @default(now()) @db.Timestamp(6)
+  brand String
+  name String
+  origin String?
+  description String
+  image String?
+  purchase_link String?
+  price String?
+  roast_level String?
+  decaf Boolean @default(false)
+  decaf_process String?
+  bitterValue Int
+  nuttyValue Int
+  sweetValue Int
+  fruityValue Int
+  floralValue Int
+}

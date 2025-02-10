@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {
   return (
-    <div className="box-border border-4 border-[#6f4f1e]/[0.20] dark:border-yellow-500 bg-[#6f4f1e]/[0.06] w-full m-6 p-5 rounded-lg shadow-lg drop-shadow-sm">
+    <div className="box-border border-4 border-[#6f4f1e]/[0.20] dark:border-yellow-500 dark:text-stone-900 bg-white dark:bg-stone-200 w-full m-6 p-5 rounded-lg shadow-lg drop-shadow-sm">
       <div className="mb-2">
         <span className="text-2xl font-bold text-[#6f4f1a]/[1] dark:text-yellow-500">{rank}. </span>
           <Link href={coffee.purchase_link} target="_blank" rel="noopener noreferrer">
@@ -44,7 +44,7 @@ const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {
         }
         <div className="justify-end">
           <a href={coffee.purchase_link} target="_blank" rel="noopener noreferrer">
-            <button type="button" className="ml-auto bg-stone-200 hover:bg-stone-300 dark:hover:bg-stone-900 bg-transparent border border-2 border-stone-300 dark:border-stone-500 text-gray-700 dark:text-gray-200 rounded-lg p-1 m-1" title="link to puchase coffee" aria-label="link to purchase coffee">
+            <button type="button" className="ml-auto bg-stone-200 hover:bg-stone-300 dark:hover:bg-stone-300 bg-transparent border border-2 border-stone-300 dark:border-stone-300 text-gray-700 dark:text-gray-800 rounded-lg p-1 m-1" title="link to puchase coffee" aria-label="link to purchase coffee">
               Buy here
             </button>
           </a>

@@ -1,5 +1,6 @@
-1. sort out database
-2. get real data and figure out the best way of doing this (alter any fields as needed)
+1. look at console warnings and errors and fix those.
+2. sort out database - see Next tutorial...
+3. get real data and figure out the best way of doing this (alter any fields as needed)
 
 
 code:
