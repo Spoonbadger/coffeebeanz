@@ -109,7 +109,6 @@ export default function Home() {
         },
       }
     })
-
     // console.log(chartInstanceRef.current)
     // Cleanup on unmount
     return () => {
@@ -225,19 +224,19 @@ export default function Home() {
             /> decaf
           </div>
 
-        <div className="w-full">
-          <Coffees 
-            roastValue={roastValue} 
-            flavorValue={flavorValue} 
-            decaf={decaf} 
-            bitterValue={bitterValue} 
-            nuttyValue={nuttyValue} 
-            sweetValue={sweetValue}
-            fruityValue={fruityValue}
-            floralValue={floralValue}
-            complex={complex}
-          />
-        </div>
+          <div className="w-full">
+            <Coffees
+              roastValue={roastValue} 
+              flavorValue={flavorValue} 
+              decaf={decaf} 
+              bitterValue={bitterValue} 
+              nuttyValue={nuttyValue} 
+              sweetValue={sweetValue}
+              fruityValue={fruityValue}
+              floralValue={floralValue}
+              complex={complex}
+            />
+          </div>
         </div>
         
       </main>

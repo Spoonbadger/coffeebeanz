@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import Coffee from './Coffee'
-import { coffees } from './lib/placeholder-data'
+// import { coffees } from './lib/placeholder-data'
 import { CoffeeType } from './lib/definitions'
-import { PrismaClient } from '@prisma/client'
+import CoffeesServer from './api/coffees'
 
 // const db = new PrismaClient
 
@@ -15,21 +15,8 @@ const FLAVOR_WEIGHTS = [1.2, 1.0, 0.8, 0.8, 1.0];
 const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, complex }
   : { roastValue: string, flavorValue: number, decaf: boolean, bitterValue: number, nuttyValue: number, sweetValue: number, fruityValue: number, floralValue: number, complex: boolean }) => {
   const [tenCoffees, setTenCoffees] = useState<CoffeeType[]>([])
+  const [coffees, setCoffees] = useState<CoffeeType[]>([])
 
-  // const allCoffees = await db.coffee.findMany({
-  //   where: {
-  //     roastValue: "dark"
-  //   },
-  //   orderBy: {
-  //     roastValue: "asc"
-  //   },
-  //   take: 10,
-  //   skip: 2,
-  //   select: {
-  //     bitterValue: true,
-  //     flavorValue: true
-  //   }
-  // })
 
   const getTargetVector = (flavorValue: number) => {
     const t = flavorValue / 100
@@ -58,8 +45,27 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
     )
   }
 
+  useEffect(() => {
+    async function fetchCoffees() {
+      try {
+        console.log("Fetching coffees...")
+        const response = await fetch('/api/coffees') // Adjust if needed
+        console.log("Response status:", response.status);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
+        const data = await response.json();
+        console.log("Fetched coffees:", data)
+        setCoffees(data)
+      } catch (error) {
+        console.error("Error fetching coffees:", error)
+      }
+    }
+    
+    fetchCoffees();
+  }, []);
+
 
   useEffect(() => {
+
     const radarFilteredCoffees = coffees
       .filter(coffee => (!decaf || coffee.decaf) && (coffee.roast_level === roastValue || !coffee.roast_level))
       .map(coffee => {
@@ -78,8 +84,8 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 5)
       .map(coffDistObj => coffDistObj.coffee)
-      
-      setTenCoffees(radarFilteredCoffees)
+    
+    setTenCoffees(radarFilteredCoffees)
   }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, decaf, roastValue, complex])
 
   useEffect(() => {
