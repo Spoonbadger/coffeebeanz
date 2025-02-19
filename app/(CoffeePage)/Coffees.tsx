@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react'
 import Coffee from './Coffee'
 // import { coffees } from './lib/placeholder-data'
-import { CoffeeType } from './lib/definitions'
-import CoffeesServer from './api/coffees'
+import { CoffeeType } from '../lib/definitions'
+import CoffeesServer from '../api/route'
+
 
 // const db = new PrismaClient
 

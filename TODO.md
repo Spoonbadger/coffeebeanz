@@ -8,6 +8,7 @@ code:
 - sort out design for mobile layout
 - a button to change to dark mode if wanted
 - if medium-light, show medium and light
+- update the database with a 'amount' column - e.g. 12oz or 16oz bag size
 
 design:
 - how to artificially change the website to dark mode or not

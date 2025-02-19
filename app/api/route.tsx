@@ -2,10 +2,11 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const getCoffeesHandler = async (_req: unknown, res: unknown) => {
+const getCoffeesHandler = async (_req: Request, res: Response) => {
   try {
     const coffees = await prisma.coffee.findMany()
     console.log("coffees backend:", coffees)
+    // Response(JSON.stringify(coffees), { status: 200 })
     res.status(200).json(coffees)
   } catch (error) {
     console.error("Error fetching coffees:", error)
@@ -16,6 +17,7 @@ const getCoffeesHandler = async (_req: unknown, res: unknown) => {
 }
 
 export default getCoffeesHandler
+
 
 
 

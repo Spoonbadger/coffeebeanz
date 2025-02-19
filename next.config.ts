@@ -56,6 +56,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'fidalgocoffee.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'vervecoffee.com',
+      },
     ],
   },
 };

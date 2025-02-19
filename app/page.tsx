@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState, useRef } from 'react'
-import Coffees from './Coffees'
+import Coffees from './(CoffeePage)/Coffees'
 import Chart from 'chart.js/auto'
 import 'chartjs-plugin-dragdata';
 
@@ -122,6 +122,7 @@ export default function Home() {
       
       <div className="w-full p-7 rounded-md bg-[url('/beans-2.avif')] bg-cover bg-[size:60%]">
         <div className="w-5/6 mx-auto rounded-lg bg-stone-200/[0.7] text-center px-5 py-3 rounded font-bold text-5xl text-stone-800 dark:text-black">BeanCoffeeTasting</div>
+        <div className="text-center text-stone-200 mb-0 font-bold">savor every sip</div>
       </div>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start my-16 w-full">
         {/* <Image
