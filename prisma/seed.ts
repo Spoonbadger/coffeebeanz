@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const coffees = [
   // Mukilteo coffee Roasters
   {
-    id: "000234",
+    id: "0200234",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Mukilteo",
@@ -25,7 +25,7 @@ const coffees = [
     floralValue: 3,
   },
   {
-    id: "000235",
+    id: "0002315",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Mukilteo",
@@ -45,7 +45,7 @@ const coffees = [
     floralValue: 1,
   },
   {
-    id: "000236",
+    id: "0002236",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Mukilteo",
@@ -65,7 +65,7 @@ const coffees = [
     floralValue: 2,
   },
   {
-    id: "000237",
+    id: "0009237",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Mukilteo",
@@ -85,7 +85,7 @@ const coffees = [
     floralValue: 2,
   },
   {
-    id: "000238",
+    id: "0080238",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Mukilteo",
@@ -106,7 +106,7 @@ const coffees = [
   },
   // Kicking Horse coffee
   {
-    id: "000233",
+    id: "0002733",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Kicking Horse",
@@ -127,7 +127,7 @@ const coffees = [
   },
   // Brooklyn Lab
   {
-    id: "000223333",
+    id: "0002263333",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Brooklyn Lab",
@@ -147,7 +147,7 @@ const coffees = [
     floralValue: 2,
   },
   {
-    id: "0002233",
+    id: "00022533",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Colombia",
@@ -167,7 +167,7 @@ const coffees = [
     floralValue: 3,
   },
   {
-    id: "00023525",
+    id: "000235425",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Death Wish Coffee Co.",
@@ -188,7 +188,7 @@ const coffees = [
   },
   // Blue Bottle
   {
-    id: "00012222",
+    id: "000122232",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Blue Bottle",
@@ -208,7 +208,7 @@ const coffees = [
     floralValue: 1,
   },
   {
-    id: "0002353335",
+    id: "00022353335",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Blue Bottle",
@@ -229,7 +229,7 @@ const coffees = [
   },
   // Peets
   {
-    id: "0002353335",
+    id: "0002353315",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Pete's",
@@ -249,7 +249,7 @@ const coffees = [
     floralValue: 6,
   },
   {
-    id: "03333",
+    id: "033313",
     created_at: new Date(),
     updated_at: new Date(),
     brand: "Fidalgo",

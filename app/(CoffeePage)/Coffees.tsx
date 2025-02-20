@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Coffee from './Coffee'
 // import { coffees } from './lib/placeholder-data'
 import { CoffeeType } from '../lib/definitions'
-import CoffeesServer from '../query/route'
+import CoffeesServer from '../api/query/route'
 
 
 // const db = new PrismaClient
@@ -50,7 +50,7 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
     async function fetchCoffees() {
       try {
         console.log("Fetching coffees...")
-        const response = await fetch('/api/coffees') // Adjust if needed
+        const response = await fetch('/api/query') // Adjust if needed
         console.log("Response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
         const data = await response.json();
@@ -66,7 +66,6 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
 
 
   useEffect(() => {
-
     const radarFilteredCoffees = coffees
       .filter(coffee => (!decaf || coffee.decaf) && (coffee.roast_level === roastValue || !coffee.roast_level))
       .map(coffee => {
@@ -85,7 +84,8 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 5)
       .map(coffDistObj => coffDistObj.coffee)
-    
+
+      console.log('radarFilteredCoffees:', radarFilteredCoffees)
     setTenCoffees(radarFilteredCoffees)
   }, [bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, decaf, roastValue, complex])
 
@@ -110,8 +110,8 @@ const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, swee
       .map(coffDistObj => coffDistObj.coffee)
 
     setTenCoffees(filteredCoffees)
-    console.log("filteredCoffees: ", filteredCoffees)
-  }, [roastValue, flavorValue, decaf])
+    console.log("filteredCoffeesSimple: ", filteredCoffees)
+  }, [roastValue, flavorValue, decaf, coffees])
   
   return (
     <ul>
