@@ -12,6 +12,7 @@ import CoffeesServer from '../api/query/route'
 // Define flavor weights (customize as needed)
 const FLAVOR_WEIGHTS = [1.2, 1.0, 0.8, 0.8, 1.0];
 
+// can delete this comment
 
 const Coffees = ({ roastValue, flavorValue, decaf, bitterValue, nuttyValue, sweetValue, fruityValue, floralValue, complex }
   : { roastValue: string, flavorValue: number, decaf: boolean, bitterValue: number, nuttyValue: number, sweetValue: number, fruityValue: number, floralValue: number, complex: boolean }) => {
