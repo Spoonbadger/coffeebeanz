@@ -6,7 +6,6 @@ import Coffee from './Coffee'
 import { CoffeeType } from '../lib/definitions'
 import CoffeesServer from '../api/query/route'
 
-// delete me
 
 // const db = new PrismaClient
 
