@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { CoffeeType } from './lib/definitions'
+import { CoffeeType } from '../lib/definitions'
 import Image from 'next/image'
 
 const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {

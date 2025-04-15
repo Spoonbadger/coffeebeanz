@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Coffee from './Coffee'
 // import { coffees } from './lib/placeholder-data'
 import { CoffeeType } from '../lib/definitions'
-import CoffeesServer from '../api/query/route'
+// import CoffeesServer from '../api/query/route'
 
 
 // const db = new PrismaClient

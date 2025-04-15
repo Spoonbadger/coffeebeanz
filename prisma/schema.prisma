@@ -33,3 +33,8 @@ model Coffee {
   fruityValue Int
   floralValue Int
 }
+
+// enum Role {
+//   USER
+//   ADMIN
+// }
