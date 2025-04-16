@@ -31,6 +31,9 @@ RUN pnpm install --frozen-lockfile --prod=false
 # Copy application code
 COPY . .
 
+# Generate Prisma Client
+RUN npx prisma generate
+
 # Build application
 RUN npx next build --experimental-build-mode compile
 
