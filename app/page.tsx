@@ -15,7 +15,7 @@ export default function Home() {
   const [complex, setComplex] = useState(false)
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const chartInstanceRef = useRef<Chart | null>(null);
+  const chartInstanceRef = useRef<Chart<'radar', number[], string> | null>(null);
   // state for complex
   const [bitterValue, setBitterValue] = useState(Math.ceil(Math.random() * 10))
   const [nuttyValue, setNuttyValue] = useState(Math.ceil(Math.random() * 10))
@@ -50,7 +50,7 @@ export default function Home() {
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) return;
   
-    chartInstanceRef.current = new Chart<"radar", number[], string>(ctx, {
+    chartInstanceRef.current = new Chart(ctx, {
       type: "radar",
       data: {
         labels: ['Bitter', 'Nutty', 'Sweet', 'Fruity', 'Floral'],
