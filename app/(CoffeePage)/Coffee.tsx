@@ -7,7 +7,7 @@ import Image from 'next/image'
 const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {
   return (
     // This one to change the positioning of all the coffees
-    <div className="box-border border-4 border-[#6f4f1e]/[0.20] dark:border-yellow-500 dark:text-stone-900 bg-white dark:bg-stone-200 w-full sm:m-6 m-6 ml-1 p-5 sm:pl-1 rounded-lg shadow-lg drop-shadow-sm">
+    <div className="box-border border-4 border-[#6f4f1e]/[0.20] dark:border-yellow-500 dark:text-stone-900 bg-white dark:bg-stone-200 w-full sm:m-6 m-6 ml-0 p-5 sm:pl-1 rounded-lg shadow-lg drop-shadow-sm">
       <div className="mb-2">
         <span className="text-2xl font-bold text-[#6f4f1a]/[1] dark:text-yellow-500">{rank}. </span>
           <Link href={coffee.purchase_link} target="_blank" rel="noopener noreferrer">

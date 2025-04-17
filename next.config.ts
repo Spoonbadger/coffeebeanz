@@ -73,8 +73,14 @@ const nextConfig: NextConfig = {
         hostname: 'irvingfarm.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'gothamroasters.com',
+        pathname: '/**',
+      },
     ],
   },
 };
 
 export default nextConfig;
+
