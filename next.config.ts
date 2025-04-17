@@ -51,14 +51,27 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'brooklynlabcoffee.com',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'fidalgocoffee.com',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'vervecoffee.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.seycoffee.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'irvingfarm.com',
+        pathname: '/**',
       },
     ],
   },

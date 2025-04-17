@@ -120,8 +120,8 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-start justify-items-start min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-[#6f4f1e]/[0.05] dark:bg-black">
       
-      <div className="w-full p-7 rounded-md bg-[url('/beans-2.avif')] bg-cover bg-[size:60%]">
-        <div className="w-5/6 mx-auto rounded-lg bg-stone-200/[0.7] text-center px-5 py-3 rounded font-bold text-5xl text-stone-800 dark:text-black">BeanCoffeeTasting</div>
+      <div className="w-full p-7 pb-3 rounded-md bg-[url('/beans-2.avif')] bg-cover bg-[size:60%]">
+        <div className="w-6/7 sm:w-5/6 mx-auto rounded-lg bg-stone-200/[0.7] text-center px-5 py-3 rounded font-bold text-4xl md:text-5xl text-stone-800 dark:text-black">BeanCoffeeTasting</div>
         <div className="text-center text-stone-200 mb-0 font-bold">savor every sip</div>
       </div>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start my-16 w-full">
