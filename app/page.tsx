@@ -125,7 +125,7 @@ export default function Home() {
         <div className="text-center text-stone-200 mb-0 font-bold">savor every sip</div>
       </div>
       {/* p here indents on mobile view */}
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start sm:my-16 my-10 w-full p-2">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start sm:my-16 my-6 w-full p-2">
         {/* <Image
           className="dark:invert"
           src="/next.svg"
