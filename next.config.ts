@@ -89,17 +89,22 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-      protocol: 'https',
-      hostname: 'artbeancoffee.com',
-      pathname: '/**',
+        protocol: 'https',
+        hostname: 'artbeancoffee.com',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'stumptowncoffee.com',
         pathname: '/**',
-        },
+      },
+      {
+        protocol: 'https',
+        hostname: 'stumptown-shop.imgix.net',
+        pathname: '/**',
+      },
     ],
   },
-};
-// delete me
+}
+
 export default nextConfig
