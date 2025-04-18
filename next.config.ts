@@ -88,6 +88,11 @@ const nextConfig: NextConfig = {
         hostname: 'sevengramscaffe.com',
         pathname: '/**',
       },
+      {
+      protocol: 'https',
+      hostname: 'artbeancoffee.com',
+      pathname: '/**',
+    },
     ],
   },
 };
