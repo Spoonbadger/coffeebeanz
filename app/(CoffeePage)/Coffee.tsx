@@ -7,14 +7,14 @@ import Image from 'next/image'
 const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {
   return (
     // This one to change the positioning of all the coffees
-    <div className="box-border border-4 border-[#6f4f1e]/[0.20] dark:border-yellow-500 dark:text-stone-900 bg-white dark:bg-stone-200 w-full sm:m-6 m-6 ml-0 p-5 sm:pl-1 rounded-lg shadow-lg drop-shadow-sm">
+    <div className="box-border border-4 border-[#6f4f1e]/[0.20] dark:border-yellow-500 dark:text-stone-900 bg-white dark:bg-stone-200 w-full mt-6 p-5 rounded-lg shadow-lg drop-shadow-sm">
       <div className="mb-2">
         <span className="text-2xl font-bold text-[#6f4f1a]/[1] dark:text-yellow-500">{rank}. </span>
           <Link href={coffee.purchase_link} target="_blank" rel="noopener noreferrer">
             <span className="text-2xl"><strong>{coffee.brand}</strong></span><span className="text-2xl"> - {coffee.name}</span>
           </Link>
       </div>
-      <div className="flex flex-direction-row">
+      <div className="flex flex-row flex-wrap sm:flex-nowrap w-full">
         <Link href={coffee.purchase_link} target="_blank" rel="noopener noreferrer">
           <div style={{ minWidth: "100px"}}>
             <Image 
@@ -23,7 +23,7 @@ const Coffee = ({ coffee, rank }: { coffee: CoffeeType, rank: number } ) => {
               alt="coffee beans image"
               width="100"
               height="100"
-              style={{ maxWidth: '100px', maxHeight: '140px' }}
+              style={{ maxWidth: '100px', maxHeight: '140px'}}
               layout="intrinsic"
             />
           </div>

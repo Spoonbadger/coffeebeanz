@@ -78,9 +78,19 @@ const nextConfig: NextConfig = {
         hostname: 'gothamroasters.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.squarespace-cdn.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sevengramscaffe.com',
+        pathname: '/**',
+      },
     ],
   },
 };
 
-export default nextConfig;
+export default nextConfig
 
