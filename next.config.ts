@@ -92,7 +92,12 @@ const nextConfig: NextConfig = {
       protocol: 'https',
       hostname: 'artbeancoffee.com',
       pathname: '/**',
-    },
+      },
+      {
+        protocol: 'https',
+        hostname: 'stumptowncoffee.com',
+        pathname: '/**',
+        },
     ],
   },
 };
