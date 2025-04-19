@@ -103,6 +103,11 @@ const nextConfig: NextConfig = {
         hostname: 'stumptown-shop.imgix.net',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'oslocoffee.com',
+        pathname: '/**',
+      },
     ],
   },
 }
